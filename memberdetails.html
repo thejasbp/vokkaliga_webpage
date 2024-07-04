@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vakkaliga Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="memberdetails.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo-circle"> 
+                <img id='img1'src="https://th.bing.com/th/id/R.df21f876b8a552af5466eb9eb6666053?rik=kqQc51pxJEKoEQ&riu=http%3a%2f%2fimg1.wikia.nocookie.net%2f__cb20130327015112%2flogopedia%2fimages%2fd%2fdb%2fVtelevision.png&ehk=0Ia%2fK0703hKSbYkHIalSJQRJZDRJ3irPHt4EwNLdw8Q%3d&risl=&pid=ImgRaw&r=0" alt="Logo">
+            </div>
+            <div class="logo-text">Vakkaliga</div>
+        </div>
+        <div class="header-right">
+            <div class="profile-icon" onclick="showProfile()">&#x1F464; </div>
+            <i style="font-size:24px" class="fa">&#xf0f3;</i>
+        </div>
+    </header>
+    <!-- <div class="back-link"><a href="totalapproved.html">←BACK</a></div> -->
+    <button class="back-button" onclick="window.history.back()">BACK</button>
+    <div class="container">
+        <h1>Vakkaliga</h1>
+        <div class="tabs">
+            <button class="tab-button active" onclick="showSection('personal')">Personal</button>
+            <button class="tab-button" onclick="showSection('address')">Address</button>
+            <button class="tab-button" onclick="showSection('occupation')">Occupation</button>
+        </div>
+        <form id="vakkaliga-form">
+            <div id="personal" class="form-section active">
+                <!-- Personal section -->
+                <div class="form-group">
+                    <label for="resident-type">Resident type:</label>
+                    <label class="radio-label"><input type="radio" name="resident-type" value="NRI"> NRI</label>
+                    <label class="radio-label"><input type="radio" name="resident-type" value="Indian" checked> Indian</label>
+                </div>
+                <div class="form-group">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name" value="Piyusha">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name" value="Kumari">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" value="piyushakrfal@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone-number">Phone Number:</label>
+                    <input type="text" id="phone-number" name="phone-number" value="+91-7337244035">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <input type="text" id="gender" name="gender">
+                </div>
+                <div class="form-group">
+                    <label for="hobbies">Hobbies:</label>
+                    <input type="text" id="hobbies" name="hobbies" value="HealthyEating">
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" value="1997-04-24">
+                </div>
+                <div class="form-group">
+                    <label for="blood-group">Blood Group:</label>
+                    <input type="text" id="blood-group" name="blood-group" value="B+">
+                </div>
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <label class="radio-label"><input type="radio" name="gender" value="Male"> Male</label>
+                    <label class="radio-label"><input type="radio" name="gender" value="Female" checked> Female</label>
+                    <label class="radio-label"><input type="radio" name="gender" value="Transgender"> Transgender</label>
+                </div>
+                <div class="form-group">
+                    <label for="caste">Caste:</label>
+                    <input type="text" id="caste" name="caste" value="Vokkaliga">
+                </div>
+                <div class="form-group">
+                    <label for="sub-caste">Sub Caste:</label>
+                    <input type="text" id="sub-caste" name="sub-caste" value="Grama Vokkaliga">
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="showSection('address')">Next</button>
+                </div>
+            </div>
+            <div id="address" class="form-section">
+                <!-- Address section -->
+                <div class="form-group">
+                    <label for="address-line1">Address Line 1:</label>
+                    <input type="text" id="address-line1" name="address-line1">
+                </div>
+                <div class="form-group">
+                    <label for="address-line2">Address Line 2:</label>
+                    <input type="text" id="address-line2" name="address-line2">
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city">
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state">
+                </div>
+                <div class="form-group">
+                    <label for="zip">Zip Code:</label>
+                    <input type="text" id="zip" name="zip">
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="showSection('personal')">Back</button>
+                    <button type="button" onclick="showSection('occupation')">Next</button>
+                </div>
+            </div>
+            <div id="occupation" class="form-section">
+                <!-- Occupation section -->
+                <div class="form-group">
+                    <label for="occupation">Occupation:</label>
+                    <input type="text" id="occupation" name="occupation">
+                </div>
+                <div class="form-group">
+                    <label for="employer">Employer:</label>
+                    <input type="text" id="employer" name="employer">
+                </div>
+                <div class="form-group">
+                    <label for="work-exp">Years of Work Experience:</label>
+                    <input type="text" id="work-exp" name="work-exp">
+                </div>
+                <div class="form-group">
+                    <label for="skills">Skills:</label>
+                    <input type="text" id="skills" name="skills">
+                </div>
+                <div class="form-group">
+                    <label for="upload-caste-cert">Upload Caste certificate:</label>
+                    <input type="file" id="upload-caste-cert" name="upload-caste-cert">
+                </div>
+                <div class="form-actions">
+                    <button type="button" onclick="approvememberFunction()">Approve</button>
+                    <p id="app"></p>
+                    <button type="button" onclick="rejectmemberFunction()">Reject</button>
+                    <div id="rejectionReasonContainer" style="display: none;">
+                        <label for="rejectionReason">Reason for Rejection:</label>
+                        <input type="text" id="rejectionReason" name="rejectionReason">
+                        <button type="button" onclick="submitRejectionReason()">Submit Reason</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProfile()">&times;</span>
+            <div id="profile-details"></div>
+        </div>
+    </div>
+
+    <script src="memberdetails.js"></script>
+</body>
+    

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Page</title>
+    <link rel="stylesheet" href="currentevents.css">
+</head>
+<body>
+    <div class="header">
+        <img src="https://th.bing.com/th/id/R.df21f876b8a552af5466eb9eb6666053?rik=kqQc51pxJEKoEQ&riu=http%3a%2f%2fimg1.wikia.nocookie.net%2f__cb20130327015112%2flogopedia%2fimages%2fd%2fdb%2fVtelevision.png&ehk=0Ia%2fK0703hKSbYkHIalSJQRJZDRJ3irPHt4EwNLdw8Q%3d&risl=&pid=ImgRaw&r=0" alt="Logo">
+        <h1>Vakkaliga</h1>
+        <div class="profile">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile">
+            <img src="https://cdn-icons-png.flaticon.com/512/1827/1827301.png" alt="Bell">
+        </div>
+    </div>
+    <div class="content">
+        <div class="back-link"><a href="dashboard.html">←BACK</a></div>
+        <div class="controls">
+            <label for="items-per-page">Items per page:</label>
+            <input type="number" id="items-per-page" value="5" min="1">
+            <button class="create-button" type="button" id="createevent" onclick="createEvent()">CREATE EVENTS</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Title</th>
+                    <th>Event Image</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="event-table-body">
+                <!-- Dynamic rows will be added here -->
+            </tbody>
+        </table>
+        <div class="pagination">
+            <button id="prev-button">←PREV</button>
+            <span id="page-info">Page 1 of 0</span>
+            <button id="next-button">NEXT→</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById("createevent").onclick = function () {
+            window.location.href = 'eventform.html';
+        }
+        let currentPage = 1;
+        function updateTable() {
+    const itemsPerPage = parseInt(document.getElementById('items-per-page').value);
+    const tableBody = document.getElementById('event-table-body');
+    const events = JSON.parse(localStorage.getItem('events')) || [];
+    const totalPages = Math.ceil(events.length / itemsPerPage);
+
+     // Initialize currentPage here or remove the previous declaration
+
+    // Clear existing rows
+    tableBody.innerHTML = '';
+
+    // Calculate the starting and ending index of the items for the current page
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+
+    // Loop through the events and create table rows for the current page
+    for (let i = start; i < end && i < events.length; i++) {
+        const event = events[i];
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${i + 1}</td>
+            <td>${event.title}</td>
+            <td><img src="${event.image}" alt="${event.title}" style="width: 50px; height: auto;"></td>
+            <td>${event.description}</td>
+            <td>${event.date}</td>
+            <td><button>Edit</button></td>
+            <td><button onclick="deleteEvent(${i})">Delete</button></td>
+        `;
+        tableBody.appendChild(row);
+    }
+    document.getElementById('page-info').textContent = `Page ${currentPage} of ${totalPages}`;
+}
+
+
+        function deleteEvent(index) {
+            const events = JSON.parse(localStorage.getItem('events')) || [];
+            events.splice(index, 1); // Remove the event at the given index
+            localStorage.setItem('events', JSON.stringify(events)); // Update local storage
+            updateTable(); // Refresh the table
+        }
+
+        document.getElementById('items-per-page').addEventListener('input', updateTable);
+
+        updateTable(); // Initial load
+        
+
+document.getElementById('prev-button').addEventListener('click', function() {
+    if (currentPage > 1) {
+        currentPage--;
+        updateTable();
+    }
+});
+
+document.getElementById('next-button').addEventListener('click', function() {
+    const itemsPerPage = parseInt(document.getElementById('items-per-page').value);
+    const events = JSON.parse(localStorage.getItem('events')) || [];
+    const totalPages = Math.ceil(events.length / itemsPerPage);
+
+    if (currentPage < totalPages) {
+        currentPage++;
+        updateTable();
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Member Details</h1>
+            <button class="back-button" onclick="window.history.back()">BACK</button>
+        </header>
+        <main>
+            <div id="memberDetails"></div>
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const memberDetails = JSON.parse(localStorage.getItem('selectedMember'));
+            const detailsContainer = document.getElementById('memberDetails');
+            if (memberDetails) {
+                detailsContainer.innerHTML = `
+                    <p><strong>Sl No:</strong> ${memberDetails.Id}</p>
+                    <p><strong>Name:</strong> ${memberDetails.Name}</p>
+                    <p><strong>Area:</strong> ${memberDetails.Area}</p>
+                    <p><strong>User Type:</strong> ${memberDetails.IsPrimary}</p>
+                    <p><strong>Submitted Date:</strong> ${memberDetails.SubmissionDate}</p>
+                `;
+            } else {
+                detailsContainer.innerHTML = '<p>No member details available.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

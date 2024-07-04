@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Events</title>
+    <link rel="stylesheet" href="events.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo-circle">V</div>
+            <div class="logo-text">Vokkaliga</div>
+        </div>
+        <div class="header-right">
+            <div i style="font-size:24px" class="fa">&#xf0f3;</i></div>
+        </div>
+    </header>
+    <div class="top-bar">
+        <a href="dashboard.html" class="back-button">&#x2190; BACK</a>
+        <a href="create_event.html" class="create-events-button">CREATE EVENTS</a>
+    </div>
+    <div class="content">
+        <div class="items-per-page">
+            <label for="items-per-page">Items per page:</label>
+            <select id="items-per-page">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Title</th>
+                    <th>Event Image</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="events-tbody">
+                <!-- Event rows will be dynamically inserted here -->
+            </tbody>
+        </table>
+        <div class="pagination">
+            <button class="prev-button" disabled>&larr; PREV</button>
+            <span class="page-info">Page 1 of 1</span>
+            <button class="next-button" disabled>NEXT &rarr;</button>
+        </div>
+        <div id="edit-modal" class="modal">
+            <div class="modal-content">
+                
+                <form class="event-form" id="edit-form">
+                    <a id="wrong" href="events.html">&#10060;</a>
+                    <h2>Edit Event </h2>
+                    <div>
+                        <label for="edit-image">Choose Image</label>
+                        <input type="file" id="edit-image" name="image">
+                    </div>
+                    <div>
+                        <label for="edit-title">Title</label>
+                        <input type="text" id="edit-title" name="title">
+                    </div>
+                    <div>
+                        <label for="edit-date">Date</label>
+                        <input type="date" id="edit-date" name="date" placeholder="dd-mm-yyyy">
+                    </div>
+                    <div>
+                        <label for="edit-description">Description</label>
+                        <textarea id="edit-description" name="description"></textarea>
+                    </div>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+    </div>
+    <script src="events.js"></script>
+</body>
+</html>

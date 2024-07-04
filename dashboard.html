@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo-circle">V</div>
+            <div class="logo-text">Vokkaliga</div>
+        </div>
+        <div class="header-right">
+            <div class="profile-icon" onclick="showProfile()">
+                &#x1F464;
+            </div>
+            <i style="font-size:24px" class="fa">&#xf0f3;</i>
+        </div>
+    </header>
+    <nav>
+        <button class="current-events" onclick="openevents()">Current Events</button>
+        <button class="Logout">logout</button>
+    </nav>
+    <div class="search-bar">
+        <label for="country">Search by</label>
+        <select id="country" onchange="fetchStates(this.value)">
+            <option>Select Country</option>
+        </select>
+        <select id="state" onchange="fetchCities(document.getElementById('country').value,this.value)" disabled>
+            <option>Select State</option>
+        </select>
+        <select id="city" disabled>
+            <option>Select Cities</option>
+        </select>
+        <button onclick="search()">SEARCH</button>
+        <button onclick="resetSearch()">RESET</button>
+    </div>
+    <main>
+        <section class="tasks">
+            <h2>My Task</h2>
+            <div class="task-cards">
+                <div class="task-card" onclick="totalapproved()">
+                    <div class="task-icon">&#10004;</div>
+                    <div class="task-count">-</div>
+                    <div class="task-label">Total Approved #</div>
+                </div>
+                <div class="task-card" onclick="totalpending()">
+                    <div class="task-icon">&#10067;</div>
+                    <div class="task-count">-</div>
+                    <div class="task-label">Total Pending #</div>
+                </div>
+                <div class="task-card" onclick="totalreject()">
+                    <div class="task-icon">&#x274C;</div>
+                    <div class="task-count">-</div>
+                    <div class="task-label">Total Rejection #</div>
+                </div>
+            </div>
+        </section>
+        <section class="members">
+            <h2>Total Members</h2>
+            <div class="member-cards">
+                <div class="member-card">
+                    <div class="member-icon">&#x1F465;</div>
+                    <div class="member-count">-</div>
+                    <div class="member-label">Total Volunteers #</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-icon">&#x1F46E;</div>
+                    <div class="member-count">-</div>
+                    <div class="member-label">Total Admins #</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="profile-details"></p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchCountries();
+        });
+
+        async function fetchCountries() {
+            try {
+                var headers = new Headers();
+                headers.append("X-CSCAPI-KEY", "enZBRUxZZGFMMTVZMUNHQWt3QlFzWktzcXpwMnhyTk80eEVlZW9PWA==");
+
+                var requestOptions = {
+                    method: 'GET',
+                    headers: headers,
+                    redirect: 'follow'
+                };
+
+                const response = await fetch("https://api.countrystatecity.in/v1/countries", requestOptions);
+                const data = await response.json();
+                const countrySelect = document.getElementById('country');
+                countrySelect.innerHTML = '<option>Select Country</option>';
+                data.forEach(country => {
+                    const option = document.createElement('option');
+                    option.value = country.iso2;
+                    option.textContent = country.name;
+                    countrySelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error fetching countries:', error);
+            }
+        }
+
+        async function fetchStates(countryCode) {
+            try {
+                if (countryCode === "Select Country") {
+                    document.getElementById('state').disabled = true;
+                    document.getElementById('city').disabled = true;
+                    return;
+                }
+                var headers = new Headers();
+                headers.append("X-CSCAPI-KEY", "enZBRUxZZGFMMTVZMUNHQWt3QlFzWktzcXpwMnhyTk80eEVlZW9PWA==");
+
+                var requestOptions = {
+                    method: 'GET',
+                    headers: headers,
+                    redirect: 'follow'
+                };
+
+                const response = await fetch('https://api.countrystatecity.in/v1/countries/${countryCode}/states', requestOptions);
+                const data = await response.json();
+                const stateSelect = document.getElementById('state');
+                stateSelect.innerHTML = '<option>Select State</option>';
+                data.forEach(state => {
+                    const option = document.createElement('option');
+                    option.value = state.iso2;
+                    option.textContent = state.name;
+                    stateSelect.appendChild(option);
+                });
+                stateSelect.disabled = false;
+                document.getElementById('city').disabled = true;
+            } catch (error) {
+                console.error('Error fetching states:', error);
+            }
+        }
+
+        async function fetchCities(countryCode, stateCode) {
+            try {
+                if (stateCode === "Select State") {
+                    document.getElementById('city').disabled = true;
+                    return;
+                }
+                var headers = new Headers();
+                headers.append("X-CSCAPI-KEY", "enZBRUxZZGFMMTVZMUNHQWt3QlFzWktzcXpwMnhyTk80eEVlZW9PWA==");
+
+                var requestOptions = {
+                    method: 'GET',
+                    headers: headers,
+                    redirect: 'follow'
+                };
+
+                const response = await fetch('https://api.countrystatecity.in/v1/countries/${countryCode}/states/${stateCode}/cities', requestOptions);
+                const data = await response.json();
+                const citySelect = document.getElementById('city');
+                citySelect.innerHTML = '<option>Select City</option>';
+                data.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.iso2;
+                    option.textContent = city.name;
+                    citySelect.appendChild(option);
+                });
+                citySelect.disabled = false;
+            } catch (error) {
+                console.error('Error fetching cities:', error);
+            }
+        }
+
+        function search() {
+            console.log('Search button clicked');
+        }
+
+        function resetSearch() {
+            document.getElementById('country').value = "Select Country";
+            document.getElementById('state').innerHTML = '<option>Select State</option>';
+            document.getElementById('state').disabled = true;
+            document.getElementById('city').innerHTML = '<option>Select City</option>';
+            document.getElementById('city').disabled = true;
+        }
+        function openCurrentEvents() {
+            window.location.href = 'currentevents.html';
+        }
+
+        function totalapproved(){
+            window.location.href='totalapproved.html';
+        }
+        function totalpending(){
+            window.location.href='totalpending.html';
+        }
+        function totalreject(){
+            window.location.href='totalreject.html'
+        }
+
+        document.querySelector('.current-events').addEventListener('click', function() {
+            window.location.href = 'events.html'; // Redirect to the current events page
+        });
+        document.querySelector('.Logout').addEventListener('click', function(){
+            window.location.href='index.html';
+        });
+        function logout(){
+            window.location.href='index.html';
+        }
+
+        
+        // Close modal when user clicks on <span> (x)
+        function closeModal() {
+            const modal = document.getElementById('profile-modal');
+            modal.style.display = "none";
+        }
+
+        // Close modal when user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('profile-modal');
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Form</title>
+    <link rel="stylesheet" href="eventform.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo-circle">
+                <img id='img1'src="https://th.bing.com/th/id/R.df21f876b8a552af5466eb9eb6666053?rik=kqQc51pxJEKoEQ&riu=http%3a%2f%2fimg1.wikia.nocookie.net%2f__cb20130327015112%2flogopedia%2fimages%2fd%2fdb%2fVtelevision.png&ehk=0Ia%2fK0703hKSbYkHIalSJQRJZDRJ3irPHt4EwNLdw8Q%3d&risl=&pid=ImgRaw&r=0" alt="Logo">
+
+            </div>
+            <div class="logo-text">Vakkaliga</div>
+        </div>
+        <div class="header-right">
+            <div class="profile-icon">&#x1F464;</div>
+            <div class="notification-icon">&#x1F514;</div>
+        </div>
+    </header>
+    <a href="currentevents.html" class="back-link">&larr; BACK</a>
+    <main>
+        <section class="event-form">
+            <h2>Event Form</h2>
+            <form id="eventForm">
+                <label for="image">Choose Image</label>
+                <input type="file" id="image" name="image">
+                
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+                
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" value="2024-06-18">
+                
+                <label for="description">Description</label>
+                <textarea id="description" name="description"></textarea>
+                
+                <button type="button" onclick="submitForm()">SUBMIT</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        function submitForm() {
+            // Get form values
+            const image = document.getElementById('image').files[0];
+            const title = document.getElementById('title').value;
+            const date = document.getElementById('date').value;
+            const description = document.getElementById('description').value;
+
+            // Create an event object
+            const event = {
+                image: image ? image.name : '',
+                title: title,
+                date: date,
+                description: description
+            };
+
+            // Get existing events from local storage
+            let events = JSON.parse(localStorage.getItem('events')) || [];
+
+            // Add new event to the array
+            events.push(event);
+
+            // Save updated events array to local storage
+            localStorage.setItem('events', JSON.stringify(events));
+
+            // Redirect to currentevents page
+            window.location.href = 'currentevents.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <link rel="stylesheet" href="cevents.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo-circle">V</div>
+            <div class="logo-text">Vokkaliga</div>
+        </div>
+        <div class="header-right">
+            <div class="profile-icon">&#x1F464;</div>
+            <div class="notification-icon">&#x1F514;</div>
+        </div>
+    </header>
+    <div class="top-bar">
+        <a href="events.html" class="back-button">&#x2190; BACK</a>
+    </div>
+    <div class="content">
+        <form class="event-form" id="event-form">
+            <h2>Event Form</h2>
+            <div>
+                <label for="image">Choose Image</label>
+                <input type="file" id="image" name="image">
+            </div>
+            <div>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div>
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" placeholder="dd-mm-yyyy">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="create_event.js"></script>
+</body>
+</html>

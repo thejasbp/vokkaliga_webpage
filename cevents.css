@@ -1,0 +1,132 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #f7c843;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo-circle {
+    background-color: white;
+    color: #fdb827;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon, .notification-icon {
+    font-size: 24px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.top-bar {
+    background-color: #ffecb3;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.top-bar a {
+    background-color: #f7c843;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f7c843;
+}
+
+.content {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.event-form {
+    background-color: #fff3e0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fdb827;
+}
+
+.event-form div {
+    margin-bottom: 10px;
+}
+
+.event-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.event-form input[type="file"],
+.event-form input[type="text"],
+.event-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.event-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fdb827;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.event-form button:hover {
+    background-color: #e0a800;
+}

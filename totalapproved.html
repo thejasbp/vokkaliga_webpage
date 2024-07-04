@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Data List</title>
+    <link rel="stylesheet" href="totalapproved.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://th.bing.com/th/id/R.df21f876b8a552af5466eb9eb6666053?rik=kqQc51pxJEKoEQ&riu=http%3a%2f%2fimg1.wikia.nocookie.net%2f__cb20130327015112%2flogopedia%2fimages%2fd%2fdb%2fVtelevision.png&ehk=0Ia%2fK0703hKSbYkHIalSJQRJZDRJ3irPHt4EwNLdw8Q%3d&risl=&pid=ImgRaw&r=0" alt="Logo">
+            <h1>Vakkaliga</h1>
+            <div class="profile">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile">
+                <img src="https://cdn-icons-png.flaticon.com/512/1827/1827301.png" alt="Bell">
+            </div>
+            
+        </div>
+        <div class="back-link"><a href="dashboard.html">←BACK</a></div>
+
+        <main>
+            <h2>Members Data List (World)</h2>
+            <div class="controls">
+                <label for="items-per-page">Items per page:</label>
+                <input type="number" id="items-per-page" value="5" min="1">
+                <!-- <button class="create-button" type="button" id="createevent" onclick="createEvent()">CREATE EVENTS</button> -->
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Select</th>
+                        <th>Name</th>
+                        <th>Area</th>
+                        <th>User Type</th>
+                        <th>Submitted Date</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Table rows will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+            <div class="pagination">
+                <button id="prev-button">←PREV</button>
+                <span id="page-info">Page 1 of 0</span>
+                <button id="next-button">NEXT→</button>
+            </div>
+            <button id="viewButton" class="hidden" onclick="viewbutton()">VIEW</button>
+        </main>
+    </div>
+    <script src="totalapproved.js"></script>
+    
+</body>
+
