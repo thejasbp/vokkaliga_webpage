@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
 
     function fetchMembers() {
-        fetch('https://vocapbkendsvc.azurewebsites.net/api/admin/members')
+        fetch('members.json')
             .then(response => response.json())
             .then(data => {
                 members = data.Data || [];
@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = document.createElement('tr');
 
             const slNoCell = document.createElement('td');
-            slNoCell.textContent = start + index + 1;
+            // slNoCell.textContent = start + index + 1;
+            slNoCell.textContent = member.Id || 'N/A';
             row.appendChild(slNoCell);
 
             const selectCell = document.createElement('td');
@@ -80,8 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle view button click
         viewButton.addEventListener('click', () => {
             const selectedMemberId = document.querySelector('input[name="selectMember"]:checked').value;
-            const selectedMember = members.find(member => member.Id === selectedMemberId);
-            localStorage.setItem('selectedMember', JSON.stringify(selectedMember));
+            // const selectedMember = members.find(member => member.Id === selectedMemberId);
+            // localStorage.setItem('selectedMember', JSON.stringify(selectedMemberId));
+            localStorage.setItem('selectedMemberId', selectedMemberId);
+
+            console.log(selectedMemberId)
             window.location.href = 'memberdetails.html';
         });
     }

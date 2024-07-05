@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
     const pageInfo = document.getElementById('page-info');
-
+    const approveid = localStorage.getItem('approveid');
     let members = [];
     let currentPage = 1;
 
     function fetchMembers() {
-        fetch('https://vocapbkendsvc.azurewebsites.net/api/admin/members')
+        fetch('members.json')
             .then(response => response.json())
             .then(data => {
                 members = data.Data || [];
@@ -20,10 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Error fetching members:', error);
             });
     }
-
+    let approvearray=[];
     function updateTable() {
         const itemsPerPage = parseInt(itemsPerPageInput.value, 10);
-        const totalPages = Math.ceil(members.length / itemsPerPage);
+        const filteredMembers = members.filter(member => member.Id == approveid);
+        approvearray.push(filteredMembers)
+        // console.log(filteredMembers)
+        console.log(approvearray)
+        const totalPages = Math.ceil(filteredMembers.length / itemsPerPage);
 
         // Clear existing rows
         tableBody.innerHTML = '';
@@ -36,11 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 
         // Display the members for the current page
-        members.slice(start, end).forEach((member, index) => {
+        filteredMembers.slice(start, end).forEach((member, index) => {
             const row = document.createElement('tr');
 
             const slNoCell = document.createElement('td');
-            slNoCell.textContent = start + index + 1;
+            slNoCell.textContent = member.Id || 'N/A';
             row.appendChild(slNoCell);
 
             const selectCell = document.createElement('td');

@@ -1,0 +1,138 @@
+/* designapp.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3e2cc;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.logo-circle {
+    background-color: #fff;
+    border-radius: 50%;
+    color: #f7c843;
+    font-size: 24px;
+    font-weight: bold;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+}
+header {
+    display: flex;
+    align-items: center;
+    background-color: #f7b439;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+nav {
+    margin: 20px 0;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.tabs button {
+    padding: 10px 20px;
+    background-color: #FFA500;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+.tabs button.active {
+    background-color: #FF8C00;
+}
+
+.form-group {
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input[type="radio"],
+.form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+.Permanent_address{
+    display: flex;
+   flex-direction: row;
+   padding: 10px 0px;
+
+   
+}
+#state,#district,#address1,#address2,#zip_code{
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button[type="submit"],
+button[type="button"] {
+    background-color: #f7b439;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    align-self: flex-end;
+}

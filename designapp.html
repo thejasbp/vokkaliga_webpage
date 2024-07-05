@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokkaliga</title>
+    <link rel="stylesheet" href="designapp.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-circle">V</div>
+            <div class="title">Vokkaliga</div>
+        </header>
+        <nav id="back-link">
+            <a href="totalapproved.html">&larr; BACK</a>
+        </nav>
+        <main>
+            <div class="tabs">
+                <button class="tab-button active" onclick="showSection('personal')">Personal</button>
+                <button class="tab-button" onclick="showSection('address')">Address</button>
+                <button class="tab-button" onclick="showSection('occupation')">Occupation</button>
+            </div>
+            <form id="personal-form">
+                <div class="form-group">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" id="first_name" name="first_name" value="">
+                </div>
+                <div class="form-group">
+                    <label>Resident type:</label>
+                    <label><input type="radio" name="resident_type" value="NRI"> NRI</label>
+                    <label><input type="radio" name="resident_type" value="Indian" > Indian</label>
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" id="last_name" name="last_name" value="">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" value="">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter MobileNumber">
+                </div>
+                <div class="form-group">
+                    <label for="relation">Relation to Primary:</label>
+                    <input type="text" id="relation" name="relation" value="">
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" value="">
+                </div>
+                <div class="form-group">
+                    <label for="hobbies">Hobbies:</label>
+                    <input type="text" id="hobbies" name="hobbies" value="">
+                </div>
+                <div class="form-group">
+                    <label for="blood_group">Blood Group:</label>
+                    <input type="text" id="blood_group" name="blood_group" value="">
+                </div>
+                <div class="form-group">
+                    <label>Gender:</label>
+                    <label><input type="radio" id="gender" name="gender" value="Male" > Male</label>
+                    <label><input type="radio" id="gender" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" id="gender" name="gender" value="Transgender"> Transgender</label>
+                </div>
+                <div class="form-group">
+                    <label>Do you want to donate organs:</label>
+                    <label><input type="radio" name="donate_organs" value="yes" > Yes</label>
+                    <label><input type="radio" name="donate_organs" value="no"> No</label>
+                </div>
+                <div class="form-group">
+                    <label>Do you want to donate blood:</label>
+                    <label><input type="radio" name="donate_blood" value="yes" > Yes</label>
+                    <label><input type="radio" name="donate_blood" value="no"> No</label>
+                </div>
+                <div class="form-group">
+                    <label>Do you have physical disabilities?</label>
+                    <label><input type="radio" name="disabilities" value="yes" > Yes</label>
+                    <label><input type="radio" name="disabilities" value="no"> No</label>
+                </div>
+                <div class="form-group">
+                    <label>Marital status:</label>
+                    <label><input type="radio" name="marital_status" value="Single"> Single</label>
+                    <label><input type="radio" name="marital_status" value="Married"> Married</label>
+                    <label><input type="radio" name="marital_status" value="Divorced" > Divorced</label>
+                </div>
+                <div class="form-group">
+                    <label>Would you like to participate in community matrimonial?</label>
+                    <label><input type="radio" name="matrimonial" value="yes" > Yes</label>
+                    <label><input type="radio" name="matrimonial" value="no"> No</label>
+                </div>
+                <div class="form-group">
+                    <label>Would you like to serve or help community people?</label>
+                    <label><input type="radio" name="serve_community" value="yes" > Yes</label>
+                    <label><input type="radio" name="serve_community" value="no"> No</label>
+                </div>
+                <div class="form-group">
+                    <label>Would you like to pursue IAS or KAS education? Or any competitive exams?</label>
+                    <label><input type="radio" name="competitive_exams" value="yes" > Yes</label>
+                    <label><input type="radio" name="competitive_exams" value="no"> No</label>
+                </div>
+                <div class="form-group">
+                    <label>Would you like to work as volunteer or approver?</label>
+                    <label><input type="radio" name="volunteer" value="yes" > Yes</label>
+                    <label><input type="radio" name="volunteer" value="no"> No</label>
+                </div>
+                <div class="form-group">
+                    <label>Would you like to participate in:</label>
+                    <label><input type="checkbox" id="participate_in"  name="participate_in" value=true > Social Work</label>
+                    <label><input type="checkbox" id="participate_in1" name="participate_in1" value=true> Community Activities</label>
+                    <label><input type="checkbox" id="participate_in2" name="participate_in2" value=true> Mutt Activities</label>
+                    <label><input type="checkbox" id="participate_in3" name="participate_in3" value=true> Natural calamity/disaster support</label>
+                </div>
+                <div class="form-group">
+                    <label for="caste_certificate">Caste certificate no or Vokkaliga Voter ID Number:</label>
+                    <input type="text" id="caste_certificate" name="caste_certificate" value="">
+                </div>
+                <div class="form-group">
+                    <label>Card Holder:</label>
+                    <label><input type="radio" name="card_holder" value="BPL"> BPL</label>
+                    <label><input type="radio" name="card_holder" value="APL"> APL</label>
+                    <label><input type="radio" name="card_holder" value="NA"> Not Applicable</label>
+                </div>
+                <div class="form-group">
+                    <label for="upload_caste_certificate">Upload Caste certificate:</label>
+                    <input type="file" id="upload_caste_certificate" name="upload_caste_certificate" value="">
+                </div>
+                <div class="form-group">
+                    <label for="sub_caste">Sub Caste:</label>
+                    <input type="text" id="sub_caste" name="sub_caste" value="">
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="showNextSection()">NEXT &rarr;</button>
+                </div>
+            </form>
+            <form id="address-form" style="display:none;">
+                <div class="form-group">
+                    <label>Currently residing in Karnataka:</label>
+                    <label><input type="radio" name="residing_karnataka" value="yes"> Yes</label>
+                    <label><input type="radio" name="residing_karnataka" value="null" > No</label>
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state" value="">
+                </div>
+                <div class="form-group">
+                    <label for="district">District:</label>
+                    <input type="text" id="district" name="district" value="">
+                </div>
+                <div class="form-group">
+                    <label for="address1">Address 1:</label>
+                    <input type="text" id="address1" name="address1" value="">
+                </div>
+                <div class="form-group">
+                    <label for="address2">Address 2:</label>
+                    <input type="text" id="address2" name="address2" value="">
+                </div>
+                <div class="form-group">
+                    <label for="zip_code">Zip code:</label>
+                    <input type="text" id="zip_code" name="zip_code" value="">
+                </div>
+                <div class="form-group">
+                    <label>Permanent Address:</label>
+                    <label><input type="checkbox" name="same_as_current" onclick="togglePermanentAddress()" > SAME AS CURRENT ADDRESS</label>
+                </div>
+                <div class="Permanent_address" id="Permanent_address">
+                    <div class="form-group1">
+                        <label for="state">State:</label>
+                        <input type="text" id="state" name="state" value="">
+                    </div>
+                    <div class="form-group1">
+                        <label for="district">District:</label>
+                        <input type="text" id="district" name="district" value="">
+                    </div>
+                    <div class="form-group1">
+                        <label for="address1">Address 1:</label>
+                        <input type="text" id="address1" name="address1" value="">
+                    </div>
+                    <div class="form-group1">
+                        <label for="address2">Address 2:</label>
+                        <input type="text" id="address2" name="address2" value="">
+                    </div>
+                    <div class="form-group1">
+                        <label for="zip_code">Zip code:</label>
+                        <input type="text" id="zip_code" name="zip_code" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="showSection('personal')">&larr;Back</button>
+                    <button type="button" onclick="showNextSection()">NEXT &rarr;</button>
+                </div>
+            </form>
+            <form id="occupation-form" style="display:none;">
+                <div class="form-group">
+                    <label for="employment_type">Select your employment type:</label>
+                    <label><input type="radio" name="employment_type" value="Government"> Government</label>
+                    <label><input type="radio" name="employment_type" value="Private"> Private</label>
+                    <label><input type="radio" name="employment_type" value="Self Employed"> Self Employed</label>
+                    <label><input type="radio" name="employment_type" value="Unemployed"> Un-employed</label>
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Occupation:</label>
+                    <input type="text" id="occupation" name="occupation" value="Industries and sectors">
+                </div>
+                <div class="form-group">
+                    <label for="sub_occupation">Sub Occupation:</label>
+                    <input type="text" id="sub_occupation" name="sub_occupation" value="Automotive">
+                </div>
+                <div class="form-group">
+                    <label for="discipline">Discipline:</label>
+                    <input type="text" id="discipline" name="discipline" value="No Data">
+                </div>
+                <div class="form-group">
+                    <label for="major">Major:</label>
+                    <input type="text" id="major" name="major" value="No Data">
+                </div>
+                <div class="form-group">
+                    <label for="education">Education:</label>
+                    <input type="text" id="education" name="education" value="No Education">
+                </div>
+                <div class="form-group">
+                    <label for="university">University:</label>
+                    <input type="text" id="university" name="university" value="No Data">
+                </div>
+                <div class="form-group">
+                    <label>Would you like to support Vokkaliga Business community?</label>
+                    <label><input type="radio" name="support_business" value="Yes"> Yes</label>
+                    <label><input type="radio" name="support_business" value="No" > No</label>
+                </div>
+                <div class="form-group">
+                    <label>Would you like to support community farmers?</label>
+                    <label><input type="radio" name="support_farmers" value="Yes"> Yes</label>
+                    <label><input type="radio" name="support_farmers" value="No" > No</label>
+                </div>
+                <div class="form-group">
+                    <label>Are you part of any other similar organisation?</label>
+                    <label><input type="radio" name="other_organisation" value="Yes"> Yes</label>
+                    <label><input type="radio" name="other_organisation" value="No" > No</label>
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="showSection('address')">&larr;Back</button>
+            </form>
+        </main>
+    </div>
+    <script src="designapp.js"></script>
+</body>
+</html>

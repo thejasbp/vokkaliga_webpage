@@ -1,13 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     try {
         // Retrieve selected member ID from localStorage
-        const selectedMemberId = localStorage.getItem('selectedMemberId');
+       
+            // var value = localStorage.getItem('key');
+            // const selectedMemberId = localStorage.getItem('selectedMemberId');
+            const selectedMemberId = localStorage.getItem('selectedMemberId');
+            console.log(selectedMemberId)
+            // console.log(value);
+       
         if (!selectedMemberId) {
             throw new Error('Selected member ID not found.');
         }
 
         // Use the retrieved member ID in the API endpoint
-        fetch(`https://vocapbkendsvc.azurewebsites.net/api/admin/member/${selectedMemberId}`)
+        // fetch(`https://vocapbkendsvc.azurewebsites.net/api/admin/member/${selectedMemberId}`)
+        fetch(`memberdetails/member${selectedMemberId}.json`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok.');
@@ -68,13 +75,17 @@ function showSection(sectionId) {
 async function approvememberFunction() {
     const selectedSubmissionDate = localStorage.getItem('submissionDate');
     const selectedMemberId = localStorage.getItem('selectedMemberId');
-    const approvemember = {
+   /* const approvemember = {
         Id: selectedMemberId,
         ModificationTimeStamp: selectedSubmissionDate
-    };
+    };*/
 
     try {
-        const response = await fetch('https://vocapbkendsvc.azurewebsites.net/api/admin/member/approve', {
+        const approveid=selectedMemberId;
+        localStorage.setItem('approveid', approveid);
+
+
+       /* const response = await fetch('https://vocapbkendsvc.azurewebsites.net/api/admin/member/approve', {
             method: 'PUT',
             body: JSON.stringify(approvemember),
             headers: {
@@ -87,7 +98,10 @@ async function approvememberFunction() {
         }
 
         const data = await response.json();
-        console.log('Member approved:', data);
+        console.log('Member approved:', data);*/
+        window.location.href='totalpending.html'
+
+        
     } catch (error) {
         console.error('Error approving member:', error);
     }
