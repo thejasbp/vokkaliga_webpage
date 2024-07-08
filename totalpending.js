@@ -5,7 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
     const pageInfo = document.getElementById('page-info');
-
+    // const filteredMembers = JSON.parse(localStorage.getItem('filteredMembers')) || [];
+    // console.log(filteredMembers)
+    const approveid=localStorage.getItem('approveid');
+    console.log(approveid)
+    let storedArray = localStorage.getItem('approvearray');
+    let approvearray = JSON.parse(storedArray);
+    let storedArray1 = localStorage.getItem('rejectarray');
+    let rejectarray = JSON.parse(storedArray1);
+    console.log(approvearray)
+    console.log("sfv")
+    console.log(rejectarray)
     let members = [];
     let currentPage = 1;
 
@@ -14,7 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 members = data.Data || [];
-                updateTable();
+                // console.log(members)
+                // console.log(approvearray)
+                // approvearray.forEach(element => {
+
+                    approvearray.forEach(element =>{
+                for(let i=0;i<data.Data.length;i++){
+                    if(data.Data[i].Id==element)
+                    {
+                        
+                        data.Data.splice(i,1);
+                    
+                        console.log(data.Data)
+                    }
+                    updateTable();
+                    }
+                 });
             })
             .catch(error => {
                 console.error('Error fetching members:', error);

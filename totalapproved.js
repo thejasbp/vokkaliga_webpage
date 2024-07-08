@@ -9,38 +9,45 @@ document.addEventListener('DOMContentLoaded', () => {
     let members = [];
     let currentPage = 1;
 
+    // Retrieve the approvearray from localStorage
+    let approvearray = JSON.parse(localStorage.getItem('approvearray')) || [];
+
     function fetchMembers() {
         fetch('members.json')
             .then(response => response.json())
             .then(data => {
                 members = data.Data || [];
+                const filteredMembers = members.filter(member => member.Id == approveid);
+                Array.prototype.push.apply(approvearray, filteredMembers); // Append filtered members to approvearray
+                // approvearray.splice(0, approvearray.length);
+
+                  
+                // Save the updated approvearray to localStorage
+                localStorage.setItem('approvearray', JSON.stringify(approvearray));
+
                 updateTable();
             })
             .catch(error => {
                 console.error('Error fetching members:', error);
             });
     }
-    let approvearray=[];
+
     function updateTable() {
         const itemsPerPage = parseInt(itemsPerPageInput.value, 10);
-        const filteredMembers = members.filter(member => member.Id == approveid);
-        approvearray.push(filteredMembers)
-        // console.log(filteredMembers)
-        console.log(approvearray)
-        const totalPages = Math.ceil(filteredMembers.length / itemsPerPage);
+        const totalPages = Math.ceil(approvearray.length / itemsPerPage);
 
         // Clear existing rows
         tableBody.innerHTML = '';
+
+        // Update page info
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 
         // Calculate the starting and ending index of the items for the current page
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
 
-        // Update page info
-        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-
         // Display the members for the current page
-        filteredMembers.slice(start, end).forEach((member, index) => {
+        approvearray.slice(start, end).forEach((member, index) => {
             const row = document.createElement('tr');
 
             const slNoCell = document.createElement('td');
@@ -103,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nextButton.addEventListener('click', () => {
         const itemsPerPage = parseInt(itemsPerPageInput.value, 10);
-        const totalPages = Math.ceil(members.length / itemsPerPage);
+        const totalPages = Math.ceil(approvearray.length / itemsPerPage);
         if (currentPage < totalPages) {
             currentPage++;
             updateTable();

@@ -99,6 +99,7 @@ async function approvememberFunction() {
 
         const data = await response.json();
         console.log('Member approved:', data);*/
+
         window.location.href='totalpending.html'
 
         
@@ -115,13 +116,14 @@ async function submitRejectionReason() {
     const rejectionReason = document.getElementById('rejectionReason').value;
     const selectedSubmissionDate = localStorage.getItem('submissionDate');
     const selectedMemberId = localStorage.getItem('selectedMemberId');
-    const rejectMember = {
-        Id: selectedMemberId,
-        ModificationTimeStamp: selectedSubmissionDate,
-        RejectionReason: rejectionReason
-    };
+    
 
     try {
+        const rejectid=selectedMemberId;
+        localStorage.setItem('rejectid', rejectid);
+        window.location.href='totalpending.html'
+
+        /*
         const response = await fetch('https://vocapbkendsvc.azurewebsites.net/api/admin/member/reject', {
             method: 'PUT',
             body: JSON.stringify(rejectMember),
@@ -137,7 +139,7 @@ async function submitRejectionReason() {
         const data = await response.json();
         console.log('Member rejected:', data);
         // Optionally hide the rejection reason container after successful submission
-        document.getElementById('rejectionReasonContainer').style.display = 'none';
+        document.getElementById('rejectionReasonContainer').style.display = 'none';*/
     } catch (error) {
         console.error('Error rejecting member:', error);
     }
